@@ -10,10 +10,10 @@ var hashStreamValidation = require('hash-stream-validation');
 var validateStream = hashStreamValidation();
 
 fs.createReadStream(filePath)
-  .pipe(validate)
+  .pipe(validateStream)
   .on('data', function() { /*... */ })
   .on('end', function() {
-    validate.test('md5', /*checksum*/);
+    validateStream.test('md5', /*checksum*/);
   });
 ```
 
