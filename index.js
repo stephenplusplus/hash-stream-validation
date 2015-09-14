@@ -1,6 +1,6 @@
 'use strict'
 
-var crc = require('sse4_crc32')
+var crc = require('fast-crc32c')
 var crypto = require('crypto')
 var through = require('through2')
 
@@ -11,31 +11,18 @@ module.exports = function (cfg) {
   var md5 = cfg.md5 !== false
 
   var hashes = {}
-
-  if (md5) {
-    hashes.md5 = crypto.createHash('md5')
-  }
+  if (md5) hashes.md5 = crypto.createHash('md5')
 
   var onData = function (chunk, enc, done) {
-    if (crc32c) {
-      hashes.crc32c = crc.calculate(chunk, hashes.crc32c)
-    }
-
-    if (md5) {
-      hashes.md5.update(chunk)
-    }
+    if (crc32c) hashes.crc32c = crc.calculate(chunk, hashes.crc32c)
+    if (md5) hashes.md5.update(chunk)
 
     done(null, chunk)
   }
 
   var onFlush = function (done) {
-    if (crc32c) {
-      hashes.crc32c = new Buffer([hashes.crc32c]).toString('base64')
-    }
-
-    if (md5) {
-      hashes.md5 = hashes.md5.digest('base64')
-    }
+    if (crc32c) hashes.crc32c = new Buffer([hashes.crc32c]).toString('base64')
+    if (md5) hashes.md5 = hashes.md5.digest('base64')
 
     done()
   }
