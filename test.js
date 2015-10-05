@@ -1,7 +1,7 @@
 'use strict'
 
 var assert = require('assert')
-var crc = require('fast-crc32c')
+var crc = require('sse4_crc32')
 var crypto = require('crypto')
 var fs = require('fs')
 
