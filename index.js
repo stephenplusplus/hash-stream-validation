@@ -1,6 +1,6 @@
 'use strict'
 
-var crc = require('fast-crc32c')
+var crc = require('sse4_crc32')
 var crypto = require('crypto')
 var through = require('through2')
 

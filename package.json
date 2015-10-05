@@ -23,7 +23,7 @@
     "standard": "^5.1.0"
   },
   "dependencies": {
-    "fast-crc32c": "^1.0.0",
+    "sse4_crc32": "^4.1.0",
     "through2": "^2.0.0"
   },
   "standard": {
