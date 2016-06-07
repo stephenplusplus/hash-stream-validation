@@ -1,6 +1,12 @@
 'use strict'
 
-var crc = require('fast-crc32c')
+var crc;
+try {
+  crc = require('fast-crc32c')
+} catch(e) {
+  crc = require('./crc32c.js')
+}
+
 var crypto = require('crypto')
 var through = require('through2')
 

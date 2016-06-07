@@ -17,6 +17,15 @@ fs.createReadStream(filePath)
   });
 ```
 
+## Do this for faster crc32c computation
+
+If the speeds are too slow for your use, this module will `try` to require [`fast-crc32c`](http://gitnpm.com/fast-crc32c). We chose not to make it an `optionalDependency` because npm's scary warning output confuses users into thinking their hard drive was just erased.
+
+
+```js
+$ npm install --save fast-crc32c
+```
+
 ## Use Case
 
 After a successful upload to a Google Cloud Storage bucket, the API will respond with the hash of data it has received. During our upload, we can run the data through this module, then confirm after the upload if we both arrived at the same results. If not, we know something went wrong during the transmission.

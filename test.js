@@ -1,11 +1,18 @@
 'use strict'
 
 var assert = require('assert')
-var crc = require('fast-crc32c')
+var crc = require('./crc32c.js')
 var crypto = require('crypto')
+var fastCrc32c = require('fast-crc32c')
 var fs = require('fs')
 
 var hashStreamValidation = require('./')
+
+describe('crc32c computations', function () {
+  it('should match computations between JS and fast-crc32c', function () {
+    assert.strictEqual(crc.calculate('test'), fastCrc32c.calculate('test'))
+  })
+})
 
 describe('hash-stream-validation', function () {
   var sums = {
