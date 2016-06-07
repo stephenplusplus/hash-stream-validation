@@ -1,9 +1,9 @@
 'use strict'
 
-var crc;
+var crc
 try {
   crc = require('fast-crc32c')
-} catch(e) {
+} catch (e) {
   crc = require('./crc32c.js')
 }
 

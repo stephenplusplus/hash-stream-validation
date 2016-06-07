@@ -4,6 +4,7 @@
   "description": "Hash a stream of data, then validate",
   "main": "index.js",
   "files": [
+    "crc32c.js",
     "index.js"
   ],
   "repository": "stephenplusplus/hash-stream-validation",
