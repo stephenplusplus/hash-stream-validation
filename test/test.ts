@@ -1,10 +1,11 @@
 'use strict';
 
 const assert = require('assert');
-import * as crc from '../src/crc32c';
+
 import * as crypto from 'crypto';
-import { Hashes } from '../src';
+import { Hashes, CRCModule } from '../src';
 const fastCrc32c = require('fast-crc32c');
+const crc: CRCModule = require('../../external/crc32c.js');
 import * as fs from 'fs';
 
 const hashStreamValidation = require('../src');

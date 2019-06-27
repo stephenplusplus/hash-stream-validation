@@ -2,13 +2,15 @@
 import * as crypto from 'crypto';
 import * as through from 'through2';
 import * as stream from 'stream';
-import { CRCModule } from './CRCModule';
 
+export interface CRCModule {
+  calculate(chunk: Buffer | string, initial?: number): number;
+}
 let crc: CRCModule;
 try {
   crc = require('fast-crc32c');
 } catch (e) {
-  crc = require('./crc32c');
+  crc = require('../../external/crc32c.js');
 }
 
 export interface Hashes {
