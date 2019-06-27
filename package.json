@@ -2,14 +2,20 @@
   "name": "hash-stream-validation",
   "version": "0.2.1",
   "description": "Hash a stream of data, then validate",
-  "main": "index.js",
+  "main": "build/src/index.js",
   "files": [
     "crc32c.js",
     "index.js"
   ],
   "repository": "stephenplusplus/hash-stream-validation",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha build/test",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile"
   },
   "keywords": [
     "hash",
@@ -23,9 +29,16 @@
   "author": "Stephen Sawchuk <sawchuk@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.0.10",
+    "@types/through2": "^2.0.34",
     "fast-crc32c": "^1.0.2",
+    "gts": "^1.0.0",
+    "intelli-espower-loader": "^1.0.1",
     "mocha": "^2.2.5",
-    "standard": "^5.1.0"
+    "source-map-support": "^0.5.12",
+    "standard": "^5.1.0",
+    "typescript": "~3.4.0"
   },
   "dependencies": {
     "through2": "^2.0.0"
