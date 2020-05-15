@@ -28,7 +28,7 @@ describe('hash-stream-validation', function () {
         sums.md5 = sums.md5.update(chunk)
       })
       .on('end', function () {
-        sums.crc32c = new Buffer([sums.crc32c]).toString('base64')
+        sums.crc32c = Buffer.from([sums.crc32c]).toString('base64')
         sums.md5 = sums.md5.digest('base64')
         done()
       })
