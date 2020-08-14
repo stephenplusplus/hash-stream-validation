@@ -8,7 +8,7 @@ try {
 }
 
 var crypto = require('crypto')
-var { Transform } = require('stream')
+var { PassThrough } = require('stream')
 
 module.exports = function (cfg) {
   cfg = cfg || {}
@@ -33,7 +33,7 @@ module.exports = function (cfg) {
     done()
   }
 
-  var validationStream = new Transform({
+  var validationStream = new PassThrough({
     transform: onData,
     flush: onFlush
   })
