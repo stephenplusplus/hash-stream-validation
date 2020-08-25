@@ -8,7 +8,7 @@ try {
 }
 
 var crypto = require('crypto')
-var through = require('through2')
+var { PassThrough } = require('stream')
 
 module.exports = function (cfg) {
   cfg = cfg || {}
@@ -33,7 +33,10 @@ module.exports = function (cfg) {
     done()
   }
 
-  var validationStream = through(onData, onFlush)
+  var validationStream = new PassThrough({
+    transform: onData,
+    flush: onFlush
+  })
 
   validationStream.test = function (algo, sum) {
     return hashes[algo] === sum
