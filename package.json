@@ -1,6 +1,6 @@
 {
   "name": "hash-stream-validation",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Hash a stream of data, then validate",
   "main": "index.js",
   "files": [
